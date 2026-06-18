@@ -6,6 +6,13 @@
 **Programación III — Paradigma Orientado a Objetos**  
 **Año 2026**
 
+### Grupo: IDK
+Integrantes:
+
+* Perez Joaquin EISI852
+* Perez Valentina ELSI1240
+* Brizuela Marco Ezequiel EISI676
+
 ---
 
 ## 1. Datos del TP
