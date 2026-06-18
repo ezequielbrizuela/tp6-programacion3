@@ -1,4 +1,4 @@
-# Trabajo Práctico N° X — Ordenamiento de objetos: Comparable, Comparator y polimorfismo en acción
+# Trabajo Práctico N° 6 — Ordenamiento de objetos: Comparable, Comparator y polimorfismo en acción
 
 ---
 
