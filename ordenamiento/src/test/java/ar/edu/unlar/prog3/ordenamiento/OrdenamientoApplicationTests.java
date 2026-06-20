@@ -1,9 +1,11 @@
-package com.unlar.ordenamiento;
+package ar.edu.unlar.prog3.ordenamiento;
 
-import com.unlar.ordenamiento.exception.InvalidSortCriteriaException;
-import com.unlar.ordenamiento.model.Estudiante;
-import com.unlar.ordenamiento.service.EstudianteService;
+import ar.edu.unlar.prog3.ordenamiento.exception.InvalidSortCriteriaException;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.service.EstudianteService;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
@@ -40,6 +42,24 @@ class OrdenamientoApplicationTests {
 		assertEquals("Valeria Diaz", ordenados.get(ordenados.size() - 1).getNombre());
 	}
 
+	@ParameterizedTest(name = "{0} {1}")
+	@CsvSource(value = {
+			"promedio|asc|LU-2024-006,LU-2024-003,LU-2024-001,LU-2024-002,LU-2024-004,LU-2024-005",
+			"promedio|desc|LU-2024-004,LU-2024-005,LU-2024-001,LU-2024-002,LU-2024-003,LU-2024-006",
+			"edad|asc|LU-2024-006,LU-2024-002,LU-2024-004,LU-2024-001,LU-2024-005,LU-2024-003",
+			"materiasAprobadas|desc|LU-2024-004,LU-2024-005,LU-2024-003,LU-2024-001,LU-2024-002,LU-2024-006",
+			"legajo|desc|LU-2024-006,LU-2024-005,LU-2024-004,LU-2024-003,LU-2024-002,LU-2024-001"
+	}, delimiter = '|')
+	void serviceOrdenaCorrectamenteConDistintosCriterios(String sortBy, String order, String legajosEsperados) {
+		EstudianteService service = new EstudianteService();
+
+		List<String> legajosObtenidos = service.ordenar(estudiantes(), sortBy, order).stream()
+				.map(Estudiante::getLegajo)
+				.toList();
+
+		assertEquals(List.of(legajosEsperados.split(",")), legajosObtenidos);
+	}
+
 	@Test
 	void serviceRechazaCriterioInvalido() {
 		EstudianteService service = new EstudianteService();
@@ -53,6 +73,16 @@ class OrdenamientoApplicationTests {
 	}
 
 	@Test
+	void serviceMantieneLegajoAscendenteComoDesempateEnOrdenDescendente() {
+		EstudianteService service = new EstudianteService();
+
+		List<Estudiante> ordenados = service.ordenar(estudiantes(), "promedio", "desc");
+
+		assertEquals("LU-2024-004", ordenados.get(0).getLegajo());
+		assertEquals("LU-2024-005", ordenados.get(1).getLegajo());
+	}
+
+	@Test
 	void restaTramposaFallaConOverflow() {
 		Comparator<Estudiante> restaTramposa =
 				(e1, e2) -> e1.getEdad() - e2.getEdad();
@@ -60,7 +90,7 @@ class OrdenamientoApplicationTests {
 
 		estudiantes.sort(restaTramposa);
 
-		assertEquals("LU-OVER-001", estudiantes.get(0).getLegajo());
+		assertEquals("LU-OVER-002", estudiantes.get(0).getLegajo());
 	}
 
 	@Test
@@ -71,7 +101,7 @@ class OrdenamientoApplicationTests {
 
 		estudiantes.sort(comparacionCorrecta);
 
-		assertEquals("LU-OVER-002", estudiantes.get(0).getLegajo());
+		assertEquals("LU-OVER-001", estudiantes.get(0).getLegajo());
 	}
 
 	private List<Estudiante> estudiantes() {
@@ -87,8 +117,8 @@ class OrdenamientoApplicationTests {
 
 	private List<Estudiante> edadesExtremas() {
 		return new ArrayList<>(List.of(
-				new Estudiante("LU-OVER-001", "Edad Maxima", 8.0, Integer.MAX_VALUE, 1),
-				new Estudiante("LU-OVER-002", "Edad Negativa", 8.0, -1, 1)
+				new Estudiante("LU-OVER-001", "Edad Negativa", 8.0, -1, 1),
+				new Estudiante("LU-OVER-002", "Edad Maxima", 8.0, Integer.MAX_VALUE, 1)
 		));
 	}
 

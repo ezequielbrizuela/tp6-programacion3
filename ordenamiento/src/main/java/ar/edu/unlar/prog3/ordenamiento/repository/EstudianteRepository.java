@@ -1,6 +1,6 @@
-package com.unlar.ordenamiento.repository;
+package ar.edu.unlar.prog3.ordenamiento.repository;
 
-import com.unlar.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 

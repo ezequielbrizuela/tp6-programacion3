@@ -1,7 +1,7 @@
-package com.unlar.ordenamiento.service;
+package ar.edu.unlar.prog3.ordenamiento.service;
 
-import com.unlar.ordenamiento.exception.InvalidSortCriteriaException;
-import com.unlar.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.exception.InvalidSortCriteriaException;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,14 +16,10 @@ public class EstudianteService {
 
     public EstudianteService() {
         comparators = new LinkedHashMap<>();
-        comparators.put("promedio", Comparator.comparingDouble(Estudiante::getPromedio)
-                .thenComparing(Estudiante::getLegajo));
-        comparators.put("edad", Comparator.comparingInt(Estudiante::getEdad)
-                .thenComparing(Estudiante::getLegajo));
-        comparators.put("nombre", Comparator.comparing(Estudiante::getNombre)
-                .thenComparing(Estudiante::getLegajo));
-        comparators.put("materiasAprobadas", Comparator.comparingInt(Estudiante::getCantidadMateriasAprobadas)
-                .thenComparing(Estudiante::getLegajo));
+        comparators.put("promedio", Comparator.comparingDouble(Estudiante::getPromedio));
+        comparators.put("edad", Comparator.comparingInt(Estudiante::getEdad));
+        comparators.put("nombre", Comparator.comparing(Estudiante::getNombre));
+        comparators.put("materiasAprobadas", Comparator.comparingInt(Estudiante::getCantidadMateriasAprobadas));
         comparators.put("legajo", Comparator.comparing(Estudiante::getLegajo));
     }
 
@@ -47,6 +43,10 @@ public class EstudianteService {
 
         if ("desc".equalsIgnoreCase(order)) {
             comparator = comparator.reversed();
+        }
+
+        if (!"legajo".equals(sortBy)) {
+            comparator = comparator.thenComparing(Estudiante::getLegajo);
         }
 
         List<Estudiante> ordenados = new ArrayList<>(lista);

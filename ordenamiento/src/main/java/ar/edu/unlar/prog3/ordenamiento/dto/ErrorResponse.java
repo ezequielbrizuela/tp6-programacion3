@@ -1,4 +1,4 @@
-package com.unlar.ordenamiento.dto;
+package ar.edu.unlar.prog3.ordenamiento.dto;
 
 import java.util.List;
 

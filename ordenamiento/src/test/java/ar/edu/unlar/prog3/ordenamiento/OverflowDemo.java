@@ -1,6 +1,6 @@
-package com.unlar.ordenamiento;
+package ar.edu.unlar.prog3.ordenamiento;
 
-import com.unlar.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
 
 import java.util.ArrayList;
 import java.util.Comparator;

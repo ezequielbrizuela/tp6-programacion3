@@ -1,6 +1,6 @@
-package com.unlar.ordenamiento.exception;
+package ar.edu.unlar.prog3.ordenamiento.exception;
 
-import com.unlar.ordenamiento.dto.ErrorResponse;
+import ar.edu.unlar.prog3.ordenamiento.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

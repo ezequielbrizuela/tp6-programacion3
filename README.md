@@ -13,6 +13,8 @@ Integrantes:
 * Perez Valentina ELSI1240
 * Brizuela Marco Ezequiel EISI676
 
+El proyecto Spring Boot se encuentra en la carpeta ordenamiento/
+
 ---
 
 ## 1. Datos del TP

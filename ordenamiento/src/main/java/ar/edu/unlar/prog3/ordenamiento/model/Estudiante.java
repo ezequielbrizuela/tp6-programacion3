@@ -1,4 +1,4 @@
-package com.unlar.ordenamiento.model;
+package ar.edu.unlar.prog3.ordenamiento.model;
 
 public class Estudiante implements Comparable<Estudiante> {
     private String legajo;

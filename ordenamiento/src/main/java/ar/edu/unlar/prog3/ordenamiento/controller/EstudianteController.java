@@ -1,8 +1,8 @@
-package com.unlar.ordenamiento.controller;
+package ar.edu.unlar.prog3.ordenamiento.controller;
 
-import com.unlar.ordenamiento.model.Estudiante;
-import com.unlar.ordenamiento.repository.EstudianteRepository;
-import com.unlar.ordenamiento.service.EstudianteService;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.repository.EstudianteRepository;
+import ar.edu.unlar.prog3.ordenamiento.service.EstudianteService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

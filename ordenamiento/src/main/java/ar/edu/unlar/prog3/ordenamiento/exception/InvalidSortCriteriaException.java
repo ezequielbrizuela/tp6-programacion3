@@ -1,4 +1,4 @@
-package com.unlar.ordenamiento.exception;
+package ar.edu.unlar.prog3.ordenamiento.exception;
 
 import java.util.List;
 

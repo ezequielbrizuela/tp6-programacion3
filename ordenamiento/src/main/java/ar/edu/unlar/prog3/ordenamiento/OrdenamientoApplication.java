@@ -1,4 +1,4 @@
-package com.unlar.ordenamiento;
+package ar.edu.unlar.prog3.ordenamiento;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,6 +1,6 @@
-package com.unlar.ordenamiento;
+package ar.edu.unlar.prog3.ordenamiento;
 
-import com.unlar.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +19,7 @@ public class ComparableDemo {
 
         /*
          * Error original antes de implementar Comparable<Estudiante>:
-         * no suitable method found for sort(java.util.List<com.unlar.ordenamiento.model.Estudiante>)
+         * no suitable method found for sort(java.util.List<ar.edu.unlar.prog3.ordenamiento.model.Estudiante>)
          * method java.util.Collections.<T>sort(java.util.List<T>) is not applicable
          * (inference variable T has incompatible bounds)
          */

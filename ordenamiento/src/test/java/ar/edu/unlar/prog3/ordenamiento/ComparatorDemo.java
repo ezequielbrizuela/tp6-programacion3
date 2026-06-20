@@ -1,6 +1,6 @@
-package com.unlar.ordenamiento;
+package ar.edu.unlar.prog3.ordenamiento;
 
-import com.unlar.ordenamiento.model.Estudiante;
+import ar.edu.unlar.prog3.ordenamiento.model.Estudiante;
 
 import java.util.Comparator;
 import java.util.List;
@@ -12,10 +12,10 @@ public class ComparatorDemo {
                 (e1, e2) -> Integer.compare(e1.getCantidadMateriasAprobadas(), e2.getCantidadMateriasAprobadas());
         Comparator<Estudiante> porNombreAsc = Comparator.comparing(Estudiante::getNombre);
         Comparator<Estudiante> porEdadAsc = Comparator.comparing(Estudiante::getEdad);
-        Comparator<Estudiante> porPromedioDescNombreAsc = Comparator.comparingDouble(Estudiante::getPromedio)
-                .reversed()
+        Comparator<Estudiante> porPromedioDesc = Comparator.comparingDouble(Estudiante::getPromedio).reversed();
+        Comparator<Estudiante> porPromedioDescNombreAsc = porPromedioDesc
                 .thenComparing(Estudiante::getNombre);
-        Comparator<Estudiante> porPromedioAsc = porPromedioDescNombreAsc.reversed();
+        Comparator<Estudiante> porPromedioAsc = porPromedioDesc.reversed();
         Comparator<Estudiante> porMateriasDescNombreAsc = Comparator.comparingInt(Estudiante::getCantidadMateriasAprobadas)
                 .reversed()
                 .thenComparing(Estudiante::getNombre);
