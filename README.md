@@ -4,6 +4,7 @@
 
 **Universidad Nacional de La Rioja**  
 **Programación III — Paradigma Orientado a Objetos**  
+**Carrera: Ingeniería en Sistemas de Información (I.S.I)**
 **Año 2026**
 
 ### Grupo: IDK
